@@ -94,7 +94,7 @@
 &trans   &kp LS(F1)    &kp LS(F2)   &kp LS(F3)       &none              &kp LA(F4)     &none             &none           &kp LA(EQUAL)  &kp LS(F9)         &kp F11       &kp F12
 &trans   &kp HOME      &kp END      &kp PAGE_UP      &kp PAGE_DOWN      &kp LC(LS(L))  &kp LEFT_BRACKET  &kp MINUS       &kp EQUAL      &kp RIGHT_BRACKET  &none         &none
 &trans   &kp LC(HOME)  &kp LC(END)  &kp LC(PAGE_UP)  &kp LC(PAGE_DOWN)  &kp LC(GRAVE)  &kp LEFT_BRACE    &kp UNDERSCORE  &kp PLUS       &kp RIGHT_BRACE    &out OUT_BLE  &none
-&trans   &trans        &trans       &trans           &trans             &trans         &mkp LCLK         &mkp RCLK       &mo 3          &bt BT_SEL 0       &out OUT_USB  &bt BT_NXT
+&trans   &trans        &trans       &trans           &trans             &trans         &mkp LCLK         &mkp RCLK       &mo 4          &bt BT_SEL 0       &out OUT_USB  &bt BT_NXT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -135,9 +135,10 @@
 
             sensor-bindings =
                 <&scroll_vertical_encoder>,
-                // 编码器1：上下滚动,
+                // 编码器1：上下滚动,,
                 <&scroll_horizontal_encoder>;
-  // 编码器2：左右滚动
+
+            // 编码器2：左右滚动
         };
     };
 };
