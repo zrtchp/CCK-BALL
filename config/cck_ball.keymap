@@ -6,6 +6,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
 
 &mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
@@ -28,22 +29,48 @@
 
 / {
     // 上下滚动编码器行为
+
     scroll_vertical_encoder: scroll_vertical_encoder {
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+
         tap-ms = <100>;
     };
 
     // 左右滚动编码器行为
+
     scroll_horizontal_encoder: scroll_horizontal_encoder {
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
         bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
+
         tap-ms = <100>;
     };
-    
+
+    leftLayer: leftLayer {
+        compatible = "zmk,behavior-tap-dance";
+        label = "LEFTLAYER";
+        #binding-cells = <0>;
+        bindings = <&mo 1>, <&mo 2>, <&togleComputer>;
+
+        tapping-term-ms = <400>;
+    };
+
     behaviors {
+    };
+
+    macros {
+        togleComputer: togleComputer {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LS(LA(LC(BACKSLASH)))>,
+                <&macro_wait_time 300>,
+                <&out OUT_TOG>;
+
+            label = "TOGLECOMPUTER";
+        };
     };
 
     keymap {
@@ -51,11 +78,11 @@
 
         QWERTY {
             bindings = <
-&kp ESC           &kp N1        &kp N2        &kp N3      &kp N4     &kp N5  &kp N6  &kp N7     &kp N8     &kp N9          &kp N0          &kp BACKSPACE
-&kp TAB           &kp Q         &kp W         &kp E       &kp R      &kp T   &kp Y   &kp U      &kp I      &kp O           &kp P           &kp BSLH
-&kp CAPSLOCK      &kp A         &kp S         &kp D       &lt 3 F    &kp G   &kp H   &kp J      &kp K      &kp L           &kp SEMI        &kp SQT
-&kp LEFT_SHIFT    &kp Z         &kp X         &kp C       &kp V      &kp B   &kp N   &kp M      &kp COMMA  &kp DOT         &kp UP_ARROW    &kp FSLH
-&kp LEFT_CONTROL  &kp LEFT_WIN  &kp LEFT_ALT  &kp DELETE  &kp SPACE  &mo 1   &mo 2   &kp SPACE  &kp ENTER  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
+&kp ESC           &kp N1        &kp N2        &kp N3      &kp N4      &kp N5     &kp N6     &kp N7     &kp N8      &kp N9          &kp N0          &kp BACKSPACE
+&kp TAB           &kp Q         &kp W         &kp E       &kp R       &kp T      &kp Y      &kp U      &kp I       &kp O           &kp P           &kp BSLH
+&kp LS(LCTRL)     &kp A         &kp S         &kp D       &lt 3 F     &kp G      &kp H      &kp J      &kp K       &kp L           &kp SEMI        &kp SQT
+&kp LEFT_SHIFT    &kp Z         &kp X         &kp C       &kp V       &kp B      &kp N      &kp M      &kp COMMA   &kp DOT         &kp UP_ARROW    &kp FSLH
+&kp LEFT_CONTROL  &kp LEFT_WIN  &kp LEFT_ALT  &kp DELETE  &leftLayer  &kp SPACE  &kp SPACE  &kp ENTER  &leftLayer  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -63,11 +90,11 @@
 
         F_layers {
             bindings = <
-&kp F12  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6     &kp F7     &kp F8  &kp F9  &kp F10  &kp F11
-&kp A    &none   &none   &none   &none   &trans  &none      &none      &none   &trans  &trans   &trans
-&trans   &none   &none   &none   &none   &trans  &mkp LCLK  &mkp RCLK  &trans  &trans  &trans   &trans
-&trans   &trans  &trans  &trans  &trans  &none   &none      &none      &trans  &trans  &none    &trans
-&trans   &trans  &trans  &trans  &trans  &trans  &mkp LCLK  &mkp RCLK  &trans  &trans  &trans   &trans
+&kp F12  &kp F1        &kp F2       &kp F3           &kp F4             &kp F5         &kp F6            &kp F7          &kp F8         &kp F9             &kp F10       &kp F11
+&trans   &kp LS(F1)    &kp LS(F2)   &kp LS(F3)       &none              &kp LA(F4)     &none             &none           &kp LA(EQUAL)  &kp LS(F9)         &kp F11       &kp F12
+&trans   &kp HOME      &kp END      &kp PAGE_UP      &kp PAGE_DOWN      &kp LC(LS(L))  &kp LEFT_BRACKET  &kp MINUS       &kp EQUAL      &kp RIGHT_BRACKET  &none         &none
+&trans   &kp LC(HOME)  &kp LC(END)  &kp LC(PAGE_UP)  &kp LC(PAGE_DOWN)  &kp LC(GRAVE)  &kp LEFT_BRACE    &kp UNDERSCORE  &kp PLUS       &kp RIGHT_BRACE    &out OUT_BLE  &none
+&trans   &trans        &trans       &trans           &trans             &trans         &mkp LCLK         &mkp RCLK       &mo 3          &bt BT_SEL 0       &out OUT_USB  &bt BT_NXT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -106,8 +133,11 @@
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
 
-            sensor-bindings = <&scroll_vertical_encoder>,   // 编码器1：上下滚动
-                             <&scroll_horizontal_encoder>;  // 编码器2：左右滚动
+            sensor-bindings =
+                <&scroll_vertical_encoder>,
+                // 编码器1：上下滚动,
+                <&scroll_horizontal_encoder>;
+  // 编码器2：左右滚动
         };
     };
 };
