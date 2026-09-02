@@ -95,8 +95,8 @@
 &kp GRAVE  &kp F1        &kp F2       &kp F3           &kp F4             &kp F5         &kp F6            &kp F7          &kp F8         &kp F9             &kp F10       &kp F11
 &trans     &kp LS(F1)    &kp LS(F2)   &kp LS(F3)       &none              &kp LA(F4)     &none             &none           &kp LA(EQUAL)  &kp LS(F9)         &kp F11       &kp F12
 &kp CAPS   &kp HOME      &kp END      &kp PAGE_UP      &kp PAGE_DOWN      &kp LC(LS(L))  &kp LEFT_BRACKET  &kp MINUS       &kp EQUAL      &kp RIGHT_BRACKET  &none         &none
-&trans     &kp LC(HOME)  &kp LC(END)  &kp LC(PAGE_UP)  &kp LC(PAGE_DOWN)  &kp LC(GRAVE)  &kp LEFT_BRACE    &kp UNDERSCORE  &kp PLUS       &kp RIGHT_BRACE    &out OUT_BLE  &none
-&trans     &trans        &trans       &trans           &trans             &trans         &kp SPACE         &trans          &mo 0          &bt BT_SEL 0       &out OUT_USB  &bt BT_NXT
+&trans     &kp LC(HOME)  &kp LC(END)  &kp LC(PAGE_UP)  &kp LC(PAGE_DOWN)  &kp LC(GRAVE)  &kp LEFT_BRACE    &kp UNDERSCORE  &kp PLUS       &kp RIGHT_BRACE    &bt BT_NXT    &none
+&trans     &trans        &trans       &trans           &trans             &trans         &kp SPACE         &trans          &mo 0          &bt BT_SEL 0       &bt BT_SEL 1  &out OUT_USB
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -105,8 +105,8 @@
         MOUSE {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &lt 4 H    &trans     &trans     &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &kp LC(W)  &trans     &trans     &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &mkp MB4   &mkp MB5   &trans     &trans    &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans    &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &mkp LCLK  &mkp RCLK  &mkp MCLK  &mkp MB4  &mkp MB5  &trans
             >;
