@@ -128,7 +128,7 @@
 &trans     &kp LS(F1)    &kp LS(F2)   &kp LS(F3)       &none              &kp LA(F4)     &none             &none           &kp LA(EQUAL)  &kp LS(F9)         &kp F11  &kp F12
 &kp CAPS   &kp HOME      &kp END      &kp PAGE_UP      &kp PAGE_DOWN      &kp LC(LS(L))  &kp LEFT_BRACKET  &kp MINUS       &kp EQUAL      &kp RIGHT_BRACKET  &none    &none
 &trans     &kp LC(HOME)  &kp LC(END)  &kp LC(PAGE_UP)  &kp LC(PAGE_DOWN)  &kp LC(GRAVE)  &kp LEFT_BRACE    &kp UNDERSCORE  &kp PLUS       &kp RIGHT_BRACE    &bt2     &none
-&trans     &trans        &trans       &trans           &trans             &trans         &kp SPACE         &trans          &mo 4          &bt0               &bt1     &out OUT_USB
+&trans     &trans        &trans       &trans           &trans             &passkey       &kp SPACE         &trans          &mo 4          &bt0               &bt1     &out OUT_USB
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
