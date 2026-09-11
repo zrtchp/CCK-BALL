@@ -71,6 +71,38 @@
 
             label = "TOGLECOMPUTER";
         };
+
+        passkey: passkey {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp G &kp Z &kp S &kp D &kp C &kp X &kp DOT &kp N1 &kp N2 &kp N1>,
+                <&macro_wait_time 200>,
+                <&kp ENTER>;
+
+            label = "PASSKEY";
+        };
+
+        bt0: bt0 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&out OUT_BLE &bt BT_SEL 0>;
+            label = "BT0";
+        };
+
+        bt1: bt1 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&out OUT_BLE &bt BT_SEL 0>;
+            label = "BT1";
+        };
+
+        bt2: bt2 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&out OUT_BLE &bt BT_SEL 0>;
+            label = "BT2";
+        };
     };
 
     keymap {
@@ -92,11 +124,11 @@
 
         F_layers {
             bindings = <
-&kp GRAVE  &kp F1        &kp F2       &kp F3           &kp F4             &kp F5         &kp F6            &kp F7          &kp F8         &kp F9             &kp F10       &kp F11
-&trans     &kp LS(F1)    &kp LS(F2)   &kp LS(F3)       &none              &kp LA(F4)     &none             &none           &kp LA(EQUAL)  &kp LS(F9)         &kp F11       &kp F12
-&kp CAPS   &kp HOME      &kp END      &kp PAGE_UP      &kp PAGE_DOWN      &kp LC(LS(L))  &kp LEFT_BRACKET  &kp MINUS       &kp EQUAL      &kp RIGHT_BRACKET  &none         &none
-&trans     &kp LC(HOME)  &kp LC(END)  &kp LC(PAGE_UP)  &kp LC(PAGE_DOWN)  &kp LC(GRAVE)  &kp LEFT_BRACE    &kp UNDERSCORE  &kp PLUS       &kp RIGHT_BRACE    &bt BT_NXT    &none
-&trans     &trans        &trans       &trans           &trans             &trans         &kp SPACE         &trans          &mo 0          &bt BT_SEL 0       &bt BT_SEL 1  &out OUT_USB
+&kp GRAVE  &kp F1        &kp F2       &kp F3           &kp F4             &kp F5         &kp F6            &kp F7          &kp F8         &kp F9             &kp F10  &kp F11
+&trans     &kp LS(F1)    &kp LS(F2)   &kp LS(F3)       &none              &kp LA(F4)     &none             &none           &kp LA(EQUAL)  &kp LS(F9)         &kp F11  &kp F12
+&kp CAPS   &kp HOME      &kp END      &kp PAGE_UP      &kp PAGE_DOWN      &kp LC(LS(L))  &kp LEFT_BRACKET  &kp MINUS       &kp EQUAL      &kp RIGHT_BRACKET  &none    &none
+&trans     &kp LC(HOME)  &kp LC(END)  &kp LC(PAGE_UP)  &kp LC(PAGE_DOWN)  &kp LC(GRAVE)  &kp LEFT_BRACE    &kp UNDERSCORE  &kp PLUS       &kp RIGHT_BRACE    &bt2     &none
+&trans     &trans        &trans       &trans           &trans             &trans         &kp SPACE         &trans          &mo 4          &bt0               &bt1     &out OUT_USB
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
