@@ -139,7 +139,7 @@
 &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans     &mkp RCLK  &kp LC(W)  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &mo 3      &mkp RCLK  &kp LC(W)  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &mkp LCLK  &trans     &mkp MCLK  &trans  &trans  &trans
             >;
 
