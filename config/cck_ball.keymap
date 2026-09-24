@@ -57,6 +57,17 @@
         tapping-term-ms = <400>;
     };
 
+    lt_mkp: lt_mkp {
+        compatible = "zmk,behavior-hold-tap";
+        label = "LT_MKP";
+        bindings = <&mo>, <&mkp>;
+
+        #binding-cells = <2>;
+        tapping-term-ms = <200>;
+        quick-tap-ms = <0>;
+        flavor = "tap-preferred";
+    };
+
     behaviors {
     };
 
@@ -113,7 +124,7 @@
 &kp ESC           &kp N1        &kp N2        &kp N3      &kp N4     &kp N5      &kp N6     &kp N7       &kp N8      &kp N9          &kp N0          &kp BACKSPACE
 &kp TAB           &kp Q         &kp W         &kp E       &kp R      &kp T       &kp Y      &kp U        &kp I       &kp O           &kp P           &kp BSLH
 &kp LS(LCTRL)     &kp A         &kp S         &kp D       &kp F      &kp G       &kp H      &kp J        &kp K       &kp L           &kp SEMI        &kp SQT
-&kp LEFT_SHIFT    &kp Z         &kp X         &kp C       &kp V      &kp B       &kp N      &kp M        &kp COMMA   &kp DOT         &kp UP_ARROW    &kp FSLH
+&kp LEFT_SHIFT    &kp Z         &kp X         &kp C       &kp V      &kp B       &lt 3 N    &kp M        &kp COMMA   &kp DOT         &kp UP_ARROW    &kp FSLH
 &kp LEFT_CONTROL  &kp LEFT_WIN  &kp LEFT_ALT  &leftLayer  &kp SPACE  &kp DELETE  &mkp LCLK  &lt 3 ENTER  &leftLayer  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
             >;
 
@@ -126,21 +137,23 @@
             bindings = <
 &kp GRAVE  &kp F1        &kp F2       &kp F3           &kp F4             &kp F5         &kp F6            &kp F7          &kp F8         &kp F9             &kp F10            &kp F11
 &trans     &kp LS(F1)    &kp LS(F2)   &kp LS(F3)       &none              &kp LA(F4)     &none             &none           &kp LA(EQUAL)  &kp LS(F9)         &kp F11            &kp F12
-&trans     &kp HOME      &kp END      &kp PAGE_UP      &kp PAGE_DOWN      &kp LC(LS(L))  &kp LEFT_BRACKET  &kp MINUS       &kp EQUAL      &kp RIGHT_BRACKET  &kp LC(SEMICOLON)  &mkp MB4
-&trans     &kp LC(HOME)  &kp LC(END)  &kp LC(PAGE_UP)  &kp LC(PAGE_DOWN)  &kp LC(GRAVE)  &kp LEFT_BRACE    &kp UNDERSCORE  &kp PLUS       &kp RIGHT_BRACE    &bt2               &mkp MB5
+&trans     &kp HOME      &kp END      &kp PAGE_UP      &kp PAGE_DOWN      &kp LC(LS(L))  &kp LEFT_BRACKET  &kp MINUS       &kp EQUAL      &kp RIGHT_BRACKET  &kp LC(SEMICOLON)  &none
+&trans     &kp LC(HOME)  &kp LC(END)  &kp LC(PAGE_UP)  &kp LC(PAGE_DOWN)  &kp LC(GRAVE)  &kp LEFT_BRACE    &kp UNDERSCORE  &kp PLUS       &kp RIGHT_BRACE    &bt2               &none
 &trans     &trans        &trans       &trans           &trans             &passkey       &kp SPACE         &trans          &to 4          &bt0               &bt1               &out OUT_USB
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings =
+                <&inc_dec_kp K_FORWARD C_AC_BACK>,
+                <&inc_dec_kp PG_UP PG_DN>;
         };
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &mkp RCLK  &mkp MCLK  &trans     &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &mkp LCLK  &trans     &kp LC(W)  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans       &trans     &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans       &trans     &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans       &trans     &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &lt_mkp 3 RCLK  &kp LC(W)    &trans     &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &mkp LCLK       &lt 3 ENTER  &mkp MCLK  &trans  &trans  &trans
             >;
 
             sensor-bindings =
@@ -150,11 +163,11 @@
 
         scroll-layers {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &kp KP_NUMLOCK   &trans       &trans    &trans    &trans  &kp CAPSLOCK
-&trans  &trans  &trans  &trans  &trans  &trans  &trans           &trans       &trans    &trans    &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans           &trans       &trans    &trans    &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &kp LC(LS(TAB))  &kp LC(TAB)  &trans    &trans    &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans           &trans       &mkp MB4  &mkp MB5  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &kp KP_NUMLOCK   &trans       &trans  &trans  &trans  &kp CAPSLOCK
+&trans  &trans  &trans  &trans  &trans  &trans  &trans           &trans       &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans           &trans       &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &kp LC(LS(TAB))  &kp LC(TAB)  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &mkp MB4         &mkp MB5     &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings =
