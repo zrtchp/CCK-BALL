@@ -97,21 +97,21 @@
         bt0: bt0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&out OUT_BLE &bt BT_SEL 0>;
+            bindings = <&kp LS(LA(LC(BACKSLASH))) &out OUT_BLE &bt BT_SEL 0>;
             label = "BT0";
         };
 
         bt1: bt1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&out OUT_BLE &bt BT_SEL 0>;
+            bindings = <&kp LS(LA(LC(BACKSLASH))) &out OUT_BLE &bt BT_SEL 0>;
             label = "BT1";
         };
 
         bt2: bt2 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&out OUT_BLE &bt BT_SEL 0>;
+            bindings = <&kp LS(LA(LC(BACKSLASH))) &out OUT_BLE &bt BT_SEL 0>;
             label = "BT2";
         };
     };
@@ -177,11 +177,11 @@
 
         BT_layers {
             bindings = <
-&trans  &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &kp CARET             &kp AMPERSAND          &kp BACKSPACE    &kp KP_DIVIDE    &kp STAR         &kp KP_MINUS
-&trans  &trans          &trans        &trans        &trans        &trans        &kp DOLLAR            &kp PERCENT            &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_PLUS
-&trans  &bt BT_CLR_ALL  &trans        &trans        &trans        &trans        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_PLUS
-&trans  &trans          &trans        &bt BT_CLR    &trans        &trans        &kp AT_SIGN           &kp HASH               &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_ENTER
-&trans  &trans          &trans        &trans        &trans        &trans        &trans                &kp COMMA              &to 0            &kp KP_NUMBER_0  &kp KP_DOT       &kp EQUAL
+&trans          &bt0            &bt1    &bt2        &bt BT_SEL 3  &bt BT_SEL 4  &kp CARET             &kp AMPERSAND          &kp BACKSPACE    &kp KP_DIVIDE    &kp STAR         &kp KP_MINUS
+&trans          &trans          &trans  &trans      &trans        &trans        &kp DOLLAR            &kp PERCENT            &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_PLUS
+&trans          &bt BT_CLR_ALL  &trans  &trans      &trans        &trans        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_PLUS
+&trans          &trans          &trans  &bt BT_CLR  &trans        &trans        &kp AT_SIGN           &kp HASH               &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_ENTER
+&kp KP_NUMLOCK  &trans          &trans  &trans      &trans        &trans        &trans                &kp COMMA              &to 0            &kp KP_NUMBER_0  &kp KP_DOT       &kp EQUAL
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
